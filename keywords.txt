@@ -1,0 +1,20 @@
+#######################################
+# Syntax Coloring Map: NW_BME280
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+BME	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin		KEYWORD2
+getPressure	KEYWORD2
+getHumidity	KEYWORD2
+getTemperature	KEYWORD2
+getHeader	KEYWORD2
+getString	KEYWORD2
