@@ -5,7 +5,7 @@ authors:
   given-names: "Bobby"
   orcid: "https://orcid.org/0000-0002-9272-4756"
 title: "NW_BME280"
-version: 2.0.0
+version: 2.0.1
 doi:  10.5281/zenodo.6338662
 date-released: 2026-05-14
 url: "https://github.com/NorthernWidget/NW_BME280"
