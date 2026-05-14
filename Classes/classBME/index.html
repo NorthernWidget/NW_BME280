@@ -225,7 +225,7 @@
           <aside class="sidebar__right sticky">
             <nav class="toc" aria-label="Table of contents">
               <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
-              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-bme">function BME</a></li><li><a href="#function-begin">function begin</a></li><li><a href="#function-getpressure">function getPressure</a></li><li><a href="#function-gethumidity">function getHumidity</a></li><li><a href="#function-gettemperature">function getTemperature</a></li><li><a href="#function-getheader">function getHeader</a></li><li><a href="#function-getstring">function getString</a></li><li><a href="#function-getpressure-1">function GetPressure</a></li><li><a href="#function-gethumidity-1">function GetHumidity</a></li><li><a href="#function-gettemperature-1">function GetTemperature</a></li><li><a href="#function-getheader-1">function GetHeader</a></li><li><a href="#function-getstring-1">function GetString</a></li></ul></li></ul>
+              <ul class="toc__menu"><li><a href="#public-functions">Public Functions</a></li><li><a href="#public-functions-documentation">Public Functions Documentation</a><ul><li><a href="#function-bme">function BME</a></li><li><a href="#function-begin">function begin</a></li><li><a href="#function-getpressure">function getPressure</a></li><li><a href="#function-gethumidity">function getHumidity</a></li><li><a href="#function-gettemperature">function getTemperature</a></li><li><a href="#function-getheader">function getHeader</a></li><li><a href="#function-getstring">function getString</a></li><li><a href="#function-beginrawreadings">function beginRawReadings</a></li><li><a href="#function-takerawreading">function takeRawReading</a></li><li><a href="#function-endrawreadings">function endRawReadings</a></li><li><a href="#function-getpressure-1">function GetPressure</a></li><li><a href="#function-gethumidity-1">function GetHumidity</a></li><li><a href="#function-gettemperature-1">function GetTemperature</a></li><li><a href="#function-getheader-1">function GetHeader</a></li><li><a href="#function-getstring-1">function GetString</a></li></ul></li></ul>
             </nav>
           </aside>
         
@@ -266,6 +266,18 @@
     <tr>
       <td>String</td>
       <td><strong><a href="/NW_BME280/Classes/classBME/#function-getstring">getString</a></strong>()<br />Northern Widget CSV data string.</td>
+    </tr>
+    <tr>
+      <td>void</td>
+      <td><strong><a href="/NW_BME280/Classes/classBME/#function-beginrawreadings">beginRawReadings</a></strong>()<br />Prepare for raw reading collection.</td>
+    </tr>
+    <tr>
+      <td>uint16_t</td>
+      <td><strong><a href="/NW_BME280/Classes/classBME/#function-takerawreading">takeRawReading</a></strong>(char * buf, uint16_t offset)<br />Take one raw reading and write CSV data into buf at offset. Writes: pressure [mBar], humidity [%], temperature [°C], each followed by a comma. Max bytes written per call: 24.</td>
+    </tr>
+    <tr>
+      <td>void</td>
+      <td><strong><a href="/NW_BME280/Classes/classBME/#function-endrawreadings">endRawReadings</a></strong>()<br />End raw reading collection.</td>
     </tr>
     <tr>
       <td>float</td>
@@ -359,6 +371,39 @@
 
 <p><strong>Return</strong>: Comma-separated pressure, humidity, temperature with trailing comma.</p>
 
+<h3 id="function-beginrawreadings">function beginRawReadings</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">beginRawReadings</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Prepare for raw reading collection.</p>
+
+<h3 id="function-takerawreading">function takeRawReading</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">uint16_t</span> <span class="n">takeRawReading</span><span class="p">(</span>
+    <span class="kt">char</span> <span class="o">*</span> <span class="n">buf</span><span class="p">,</span>
+    <span class="kt">uint16_t</span> <span class="n">offset</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Take one raw reading and write CSV data into buf at offset. Writes: pressure [mBar], humidity [%], temperature [°C], each followed by a comma. Max bytes written per call: 24.</p>
+
+<p><strong>Parameters</strong>:</p>
+
+<ul>
+  <li><strong>buf</strong> Caller-managed destination buffer.</li>
+  <li><strong>offset</strong> Starting write position in buf.</li>
+</ul>
+
+<p><strong>Return</strong>: New offset after writing.</p>
+
+<h3 id="function-endrawreadings">function endRawReadings</h3>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">endRawReadings</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>End raw reading collection.</p>
+
 <h3 id="function-getpressure-1">function GetPressure</h3>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">float</span> <span class="n">GetPressure</span><span class="p">()</span>
@@ -386,7 +431,7 @@
 
 <hr />
 
-<p>Updated on 2026-05-14 at 21:21:45 +0000</p>
+<p>Updated on 2026-05-14 at 21:45:07 +0000</p>
 
         
       </section>

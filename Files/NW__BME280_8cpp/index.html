@@ -15,7 +15,7 @@
 <meta charset="utf-8">
 
 
-<!-- begin _includes/seo.html --><title>src/BME.cpp - NW_BME280</title>
+<!-- begin _includes/seo.html --><title>src/NW_BME280.cpp</title>
 <meta name="description" content="Northern Widget interface for the Bosch BME280 temperature, humidity, and pressure sensor">
 
 
@@ -26,8 +26,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="NW_BME280">
-<meta property="og:title" content="src/BME.cpp">
-<meta property="og:url" content="https://docs.northernwidget.com/NW_BME280/Files/BME_8cpp/">
+<meta property="og:title" content="src/NW_BME280.cpp">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_BME280/Files/NW__BME280_8cpp/">
 
 
   <meta property="og:description" content="Northern Widget interface for the Bosch BME280 temperature, humidity, and pressure sensor">
@@ -45,7 +45,7 @@
 
 
 
-<link rel="canonical" href="https://docs.northernwidget.com/NW_BME280/Files/BME_8cpp/">
+<link rel="canonical" href="https://docs.northernwidget.com/NW_BME280/Files/NW__BME280_8cpp/">
 
 
 
@@ -201,7 +201,7 @@
 
 
   <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="src/BME.cpp">
+    <meta itemprop="headline" content="src/NW_BME280.cpp">
     
     
     
@@ -210,7 +210,7 @@
       
         <header>
           <h1 id="page-title" class="page__title p-name" itemprop="headline">
-            <a href="https://docs.northernwidget.com/NW_BME280/Files/BME_8cpp/" itemprop="url">src/BME.cpp
+            <a href="https://docs.northernwidget.com/NW_BME280/Files/NW__BME280_8cpp/" itemprop="url">src/NW_BME280.cpp
 </a>
           </h1>
           
@@ -232,7 +232,7 @@
         <h2 id="source-code">Source code</h2>
 
 <div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/******************************************************************************
-BME.cpp — NW_BME280
+NW_BME280.cpp — NW_BME280
 Northern Widget interface for the Bosch BME280 temperature, humidity,
 and pressure sensor.
 
@@ -241,7 +241,7 @@ Bobby Schulz @ Northern Widget LLC
 Distributed as-is; no warranty is given.
 ******************************************************************************/</span>
 
-<span class="cp">#include</span> <span class="cpf">"BME.h"</span><span class="cp">
+<span class="cp">#include</span> <span class="cpf">"NW_BME280.h"</span><span class="cp">
 </span>
 <span class="n">BME</span><span class="o">::</span><span class="n">BME</span><span class="p">()</span>
 <span class="p">{</span>
@@ -278,6 +278,18 @@ Distributed as-is; no warranty is given.
     <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">getPressure</span><span class="p">())</span> <span class="o">+</span> <span class="s">","</span> <span class="o">+</span> <span class="n">String</span><span class="p">(</span><span class="n">getHumidity</span><span class="p">())</span> <span class="o">+</span> <span class="s">","</span> <span class="o">+</span> <span class="n">String</span><span class="p">(</span><span class="n">getTemperature</span><span class="p">())</span> <span class="o">+</span> <span class="s">","</span><span class="p">;</span>
 <span class="p">}</span>
 
+<span class="kt">void</span> <span class="n">BME</span><span class="o">::</span><span class="n">beginRawReadings</span><span class="p">()</span> <span class="p">{}</span>
+
+<span class="kt">uint16_t</span> <span class="n">BME</span><span class="o">::</span><span class="n">takeRawReading</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">offset</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+    <span class="n">dtostrf</span><span class="p">(</span><span class="n">getPressure</span><span class="p">(),</span>    <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span> <span class="n">offset</span> <span class="o">+=</span> <span class="n">snprintf</span><span class="p">(</span><span class="n">buf</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">"%s,"</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span>
+    <span class="n">dtostrf</span><span class="p">(</span><span class="n">getHumidity</span><span class="p">(),</span>    <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span> <span class="n">offset</span> <span class="o">+=</span> <span class="n">snprintf</span><span class="p">(</span><span class="n">buf</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">"%s,"</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span>
+    <span class="n">dtostrf</span><span class="p">(</span><span class="n">getTemperature</span><span class="p">(),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span> <span class="n">offset</span> <span class="o">+=</span> <span class="n">snprintf</span><span class="p">(</span><span class="n">buf</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">"%s,"</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">offset</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">BME</span><span class="o">::</span><span class="n">endRawReadings</span><span class="p">()</span> <span class="p">{}</span>
+
 <span class="c1">// ── PascalCase aliases (deprecated) ───────────────────────────────────────────</span>
 
 <span class="kt">float</span> <span class="n">BME</span><span class="o">::</span><span class="n">GetPressure</span><span class="p">()</span>     <span class="p">{</span> <span class="k">return</span> <span class="n">getPressure</span><span class="p">();</span> <span class="p">}</span>
@@ -289,7 +301,7 @@ Distributed as-is; no warranty is given.
 
 <hr />
 
-<p>Updated on 2026-05-14 at 21:21:45 +0000</p>
+<p>Updated on 2026-05-14 at 21:45:07 +0000</p>
 
         
       </section>
