@@ -1,3 +1,17 @@
+/******************************************************************************
+BME.h — NW_BME280
+Northern Widget interface for the Bosch BME280 temperature, humidity,
+and pressure sensor.
+
+Bobby Schulz @ Northern Widget LLC
+
+Wraps the Adafruit BME280 library to provide the Northern Widget sensor
+API: begin(), getHeader(), and getString(). Returns atmospheric pressure
+in mBar, relative humidity in %, and temperature in °C.
+
+Distributed as-is; no warranty is given.
+******************************************************************************/
+
 #ifndef BME_h
 #define BME_h
 

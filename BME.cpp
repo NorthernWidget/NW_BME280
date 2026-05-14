@@ -1,3 +1,13 @@
+/******************************************************************************
+BME.cpp — NW_BME280
+Northern Widget interface for the Bosch BME280 temperature, humidity,
+and pressure sensor.
+
+Bobby Schulz @ Northern Widget LLC
+
+Distributed as-is; no warranty is given.
+******************************************************************************/
+
 #include "BME.h"
 
 BME::BME()
