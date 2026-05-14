@@ -1,27 +1,26 @@
 #include "BME.h"
-#include <Adafruit_BME280.h>
 
 BME::BME()
 {
 }
 
-uint8_t BME::begin(uint8_t ADR_)
+bool BME::begin(uint8_t ADR_)
 {
 	ADR = ADR_;
 	return Sensor.begin(ADR);
 }
 
-float BME::getPressure() //Get pressure in mBar 
+float BME::getPressure()
 {
-	return Sensor.readPressure()*0.01; //Convert to mBar
+	return Sensor.readPressure() * 0.01;  // Pa → mBar
 }
 
-float BME::getHumidity()  //Return humidity in % (realtive)
+float BME::getHumidity()
 {
 	return Sensor.readHumidity();
 }
 
-float BME::getTemperature()  //Return temp in C
+float BME::getTemperature()
 {
 	return Sensor.readTemperature();
 }
@@ -36,34 +35,10 @@ String BME::getString()
 	return String(getPressure()) + "," + String(getHumidity()) + "," + String(getTemperature()) + ",";
 }
 
-/////////////////////////////////////////////
-// PascalCase: FOR BACKWARDS COMPATIBILITY //
-/////////////////////////////////////////////
+// ── PascalCase aliases (deprecated) ───────────────────────────────────────────
 
-// This case should be used for classes and objects
-
-float BME::GetPressure() //Get pressure in mBar 
-{
-	return Sensor.readPressure()*0.01; //Convert to mBar
-}
-
-float BME::GetHumidity()  //Return humidity in % (realtive)
-{
-	return Sensor.readHumidity();
-}
-
-float BME::GetTemperature()  //Return temp in C
-{
-	return Sensor.readTemperature();
-}
-
-String BME::GetHeader()
-{
-	return "Pressure Atmos [mBar],Humidity [%],Temp Atmos [C],";
-}
-
-String BME::GetString()
-{
-	return String(GetPressure()) + "," + String(GetHumidity()) + "," + String(GetTemperature()) + ",";
-}
-
+float BME::GetPressure()     { return getPressure(); }
+float BME::GetHumidity()     { return getHumidity(); }
+float BME::GetTemperature()  { return getTemperature(); }
+String BME::GetHeader()      { return getHeader(); }
+String BME::GetString()      { return getString(); }

@@ -1,4 +1,3 @@
-
 #ifndef BME_h
 #define BME_h
 
@@ -9,22 +8,21 @@ class BME
 {
 	public:
 		BME();
-		uint8_t begin(uint8_t ADR_ = 0x77); //use default address
-		//
+		bool begin(uint8_t ADR_ = 0x77);
 		float getPressure();
 		float getHumidity();
 		float getTemperature();
 		String getString();
 		String getHeader();
 		// PascalCase aliases — deprecated, use camelCase versions above
-		[[deprecated("Use getPressure()")]]  float GetPressure();
-		[[deprecated("Use getHumidity()")]]  float GetHumidity();
+		[[deprecated("Use getPressure()")]]    float GetPressure();
+		[[deprecated("Use getHumidity()")]]    float GetHumidity();
 		[[deprecated("Use getTemperature()")]] float GetTemperature();
-		[[deprecated("Use getString()")]]    String GetString();
-		[[deprecated("Use getHeader()")]]    String GetHeader();
+		[[deprecated("Use getString()")]]      String GetString();
+		[[deprecated("Use getHeader()")]]      String GetHeader();
 	private:
 		Adafruit_BME280 Sensor;
-		uint8_t ADR = 0x77; //Default global sensor address 
+		uint8_t ADR = 0x77;
 };
 
 #endif
