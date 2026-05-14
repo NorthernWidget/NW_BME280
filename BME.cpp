@@ -28,12 +28,12 @@ float BME::getTemperature()  //Return temp in C
 
 String BME::getHeader()
 {
-	return "Pressure Atmos [mBar], Humidity [%], Temp Atmos [C],";
+	return "Pressure Atmos [mBar],Humidity [%],Temp Atmos [C],";
 }
 
 String BME::getString()
 {
-	return String(GetPressure()) + "," + String(GetHumidity()) + "," + String(GetTemperature()) + ",";
+	return String(getPressure()) + "," + String(getHumidity()) + "," + String(getTemperature()) + ",";
 }
 
 /////////////////////////////////////////////
@@ -59,7 +59,7 @@ float BME::GetTemperature()  //Return temp in C
 
 String BME::GetHeader()
 {
-	return "Pressure Atmos [mBar], Humidity [%], Temp Atmos [C],";
+	return "Pressure Atmos [mBar],Humidity [%],Temp Atmos [C],";
 }
 
 String BME::GetString()
