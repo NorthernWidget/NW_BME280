@@ -8,7 +8,7 @@ BME::BME()
 uint8_t BME::begin(uint8_t ADR_)
 {
 	ADR = ADR_;
-	Sensor.begin(ADR);
+	return Sensor.begin(ADR);
 }
 
 float BME::getPressure() //Get pressure in mBar 
