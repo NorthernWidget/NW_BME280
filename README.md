@@ -2,6 +2,8 @@
 
 # NW_BME280
 
+[**API Documentation**](https://docs.northernwidget.com/NW_BME280/)
+
 Northern Widget interface for the [Bosch BME280](https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/) temperature, humidity, and pressure sensor.
 
 This library wraps the [Adafruit BME280 Library](https://github.com/adafruit/Adafruit_BME280_Library) to provide the standard Northern Widget sensor API, used across all NW sensor libraries and supported natively by the [Margay](https://github.com/NorthernWidget/Margay_Library) and [Okapi](https://github.com/NorthernWidget-Skunkworks/Okapi_Library) data loggers.
