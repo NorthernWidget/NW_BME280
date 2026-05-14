@@ -1,0 +1,349 @@
+
+
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.28.0 by Michael Rose
+  Copyright 2013-2026 Michael Rose - mademistakes.com | @mmistakes
+  Copyright 2024-2026 iBug - ibugone.com | @iBug
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js">
+  <head>
+    
+<meta charset="utf-8">
+
+
+<!-- begin _includes/seo.html --><title>NW_BME280</title>
+<meta name="description" content="Northern Widget interface for the Bosch BME280 temperature, humidity, and pressure sensor">
+
+
+  <meta name="author" content="Northern Widget">
+  
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="NW_BME280">
+<meta property="og:title" content="NW_BME280">
+<meta property="og:url" content="https://docs.northernwidget.com/NW_BME280/">
+
+
+  <meta property="og:description" content="Northern Widget interface for the Bosch BME280 temperature, humidity, and pressure sensor">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="canonical" href="https://docs.northernwidget.com/NW_BME280/">
+
+
+
+
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+    "name": null,
+    "url": "https://docs.northernwidget.com/NW_BME280/"
+}
+</script>
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/NW_BME280/feed.xml" type="application/atom+xml" rel="alternate" title="NW_BME280 Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/NW_BME280/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single" dir="ltr">
+    
+<nav class="skip-links" aria-label="Skip links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav" aria-label="Primary navigation">
+        
+        <a class="site-title" href="/NW_BME280/">
+          NW_BME280
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/"
+                
+                
+              >Quick-Start Guide</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+
+
+<div id="main" role="main">
+  
+
+  <div class="sidebar sticky">
+  
+  
+    
+      
+      
+      
+      
+    
+    
+      
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">Toggle Menu</label>
+  <ul class="nav__items">
+    
+      
+      
+        <li>
+          
+            <a href="/NW_BME280/"><span class="nav__sub-title">Overview</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_BME280/Classes/classBME/"><span class="nav__sub-title">BME Class</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_BME280/Classes/index_classes/"><span class="nav__sub-title">Classes</span></a>
+          
+
+          
+        </li>
+      
+        <li>
+          
+            <a href="/NW_BME280/Files/index_files/"><span class="nav__sub-title">Files</span></a>
+          
+
+          
+        </li>
+      
+    
+  </ul>
+</nav>
+
+    
+  
+  
+  </div>
+
+
+
+  <article class="page h-entry" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          
+          
+
+
+
+        </header>
+      
+
+      <section class="page__content e-content" itemprop="text">
+        
+        <p><a href="https://doi.org/10.5281/zenodo.6338662"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.6338662.svg" alt="DOI" /></a></p>
+
+<h1 id="nw_bme280">NW_BME280</h1>
+
+<p><a href="https://docs.northernwidget.com/NW_BME280/"><strong>API Documentation</strong></a></p>
+
+<p>Northern Widget interface for the <a href="https://www.bosch-sensortec.com/products/environmental-sensors/humidity-sensors-bme280/">Bosch BME280</a> temperature, humidity, and pressure sensor.</p>
+
+<p>This library wraps the <a href="https://github.com/adafruit/Adafruit_BME280_Library">Adafruit BME280 Library</a> to provide the standard Northern Widget sensor API, used across all NW sensor libraries and supported natively by the <a href="https://github.com/NorthernWidget/Margay_Library">Margay</a> and <a href="https://github.com/NorthernWidget-Skunkworks/Okapi_Library">Okapi</a> data loggers.</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<ul>
+  <li><a href="https://github.com/adafruit/Adafruit_BME280_Library">Adafruit BME280 Library</a></li>
+</ul>
+
+<h2 id="api">API</h2>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include</span> <span class="cpf">&lt;NW_BME280.h&gt;</span><span class="cp">
+</span>
+<span class="n">BME</span> <span class="n">sensor</span><span class="p">;</span>
+
+<span class="kt">bool</span>  <span class="nf">begin</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">address</span> <span class="o">=</span> <span class="mh">0x77</span><span class="p">);</span>  <span class="c1">// returns false if sensor not found</span>
+
+<span class="kt">float</span> <span class="nf">getPressure</span><span class="p">();</span>     <span class="c1">// atmospheric pressure, mBar</span>
+<span class="kt">float</span> <span class="nf">getHumidity</span><span class="p">();</span>     <span class="c1">// relative humidity, %</span>
+<span class="kt">float</span> <span class="nf">getTemperature</span><span class="p">();</span>  <span class="c1">// temperature, °C</span>
+
+<span class="n">String</span> <span class="nf">getHeader</span><span class="p">();</span>      <span class="c1">// "Pressure Atmos [mBar],Humidity [%],Temp Atmos [C],"</span>
+<span class="n">String</span> <span class="nf">getString</span><span class="p">();</span>      <span class="c1">// comma-separated values with trailing comma</span>
+</code></pre></div></div>
+
+<h2 id="installation">Installation</h2>
+
+<p>Install via the <a href="https://docs.arduino.cc/software/ide-v1/tutorials/installing-libraries/">Arduino Library Manager</a> by searching for <strong>NW_BME280</strong>, or install the <a href="https://github.com/adafruit/Adafruit_BME280_Library">Adafruit BME280 Library</a> dependency first and then download this library manually.</p>
+
+<h2 id="authors">Authors</h2>
+
+<p>Bobby Schulz, Northern Widget LLC</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+  
+
+  
+
+
+        
+
+
+
+      </footer>
+
+      
+
+      
+
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/NW_BME280/feed.xml"><i class="fas fa-fw fa-square-rss" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2026 <a href="https://docs.northernwidget.com">NW_BME280</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+
+  <script src="/NW_BME280/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
