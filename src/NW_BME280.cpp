@@ -1,5 +1,5 @@
 /******************************************************************************
-BME.cpp — NW_BME280
+NW_BME280.cpp — NW_BME280
 Northern Widget interface for the Bosch BME280 temperature, humidity,
 and pressure sensor.
 
@@ -8,7 +8,7 @@ Bobby Schulz @ Northern Widget LLC
 Distributed as-is; no warranty is given.
 ******************************************************************************/
 
-#include "BME.h"
+#include "NW_BME280.h"
 
 BME::BME()
 {
@@ -44,6 +44,18 @@ String BME::getString()
 {
 	return String(getPressure()) + "," + String(getHumidity()) + "," + String(getTemperature()) + ",";
 }
+
+void BME::beginRawReadings() {}
+
+uint16_t BME::takeRawReading(char* buf, uint16_t offset) {
+	char tmp[10];
+	dtostrf(getPressure(),    1, 2, tmp); offset += snprintf(buf + offset, 10, "%s,", tmp);
+	dtostrf(getHumidity(),    1, 2, tmp); offset += snprintf(buf + offset, 10, "%s,", tmp);
+	dtostrf(getTemperature(), 1, 2, tmp); offset += snprintf(buf + offset, 10, "%s,", tmp);
+	return offset;
+}
+
+void BME::endRawReadings() {}
 
 // ── PascalCase aliases (deprecated) ───────────────────────────────────────────
 

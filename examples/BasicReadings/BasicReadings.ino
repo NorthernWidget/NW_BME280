@@ -16,7 +16,7 @@
  * GNU GPL v3.0
  */
 
-#include <BME.h>
+#include <NW_BME280.h>
 
 BME bme;
 

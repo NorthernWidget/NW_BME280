@@ -1,19 +1,20 @@
 /******************************************************************************
-BME.h — NW_BME280
+NW_BME280.h — NW_BME280
 Northern Widget interface for the Bosch BME280 temperature, humidity,
 and pressure sensor.
 
 Bobby Schulz @ Northern Widget LLC
 
 Wraps the Adafruit BME280 library to provide the Northern Widget sensor
-API: begin(), getHeader(), and getString(). Returns atmospheric pressure
-in mBar, relative humidity in %, and temperature in °C.
+API: begin(), getHeader(), getString(), and the raw readings interface.
+Returns atmospheric pressure in mBar, relative humidity in %, and
+temperature in °C.
 
 Distributed as-is; no warranty is given.
 ******************************************************************************/
 
-#ifndef BME_h
-#define BME_h
+#ifndef NW_BME280_h
+#define NW_BME280_h
 
 #include "Arduino.h"
 #include <Adafruit_BME280.h>
@@ -43,6 +44,20 @@ class BME
 		/** @brief Northern Widget CSV data string.
 		    @return Comma-separated pressure, humidity, temperature with trailing comma. */
 		String getString();
+
+		/** @brief Prepare for raw reading collection. */
+		void beginRawReadings();
+
+		/** @brief Take one raw reading and write CSV data into buf at offset.
+		    Writes: pressure [mBar], humidity [%], temperature [°C], each followed by a comma.
+		    Max bytes written per call: 24.
+		    @param buf Caller-managed destination buffer.
+		    @param offset Starting write position in buf.
+		    @return New offset after writing. */
+		uint16_t takeRawReading(char* buf, uint16_t offset);
+
+		/** @brief End raw reading collection. */
+		void endRawReadings();
 
 		// PascalCase aliases — deprecated, use camelCase versions above
 		[[deprecated("Use getPressure()")]]    float GetPressure();

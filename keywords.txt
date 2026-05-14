@@ -16,5 +16,8 @@ begin		KEYWORD2
 getPressure	KEYWORD2
 getHumidity	KEYWORD2
 getTemperature	KEYWORD2
-getHeader	KEYWORD2
-getString	KEYWORD2
+getHeader		KEYWORD2
+getString		KEYWORD2
+beginRawReadings	KEYWORD2
+takeRawReading		KEYWORD2
+endRawReadings		KEYWORD2
