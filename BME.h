@@ -16,12 +16,12 @@ class BME
 		float getTemperature();
 		String getString();
 		String getHeader();
-		// PascalCase for backwards compatibility; may deprecate sometime
-		float GetPressure();
-		float GetHumidity();
-		float GetTemperature();
-		String GetString();
-		String GetHeader();
+		// PascalCase aliases — deprecated, use camelCase versions above
+		[[deprecated("Use getPressure()")]]  float GetPressure();
+		[[deprecated("Use getHumidity()")]]  float GetHumidity();
+		[[deprecated("Use getTemperature()")]] float GetTemperature();
+		[[deprecated("Use getString()")]]    String GetString();
+		[[deprecated("Use getHeader()")]]    String GetHeader();
 	private:
 		Adafruit_BME280 Sensor;
 		uint8_t ADR = 0x77; //Default global sensor address 
