@@ -13,7 +13,7 @@
  *              → VCC (sets I2C address to 0x77, the default)
  *
  * Northern Widget LLC
- * BSD Zero Clause License
+ * GNU GPL v3.0
  */
 
 #include <BME.h>

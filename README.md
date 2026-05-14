@@ -15,7 +15,7 @@ This library wraps the [Adafruit BME280 Library](https://github.com/adafruit/Ada
 ## API
 
 ```cpp
-#include <NW_BME280.h>
+#include <BME.h>
 
 BME sensor;
 

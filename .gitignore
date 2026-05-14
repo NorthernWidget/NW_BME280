@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# Doxygen / Jekyll build artifacts
+xml/
+_site/
+_built/
+.sass-cache/
+.jekyll-cache/
+Gemfile.lock
