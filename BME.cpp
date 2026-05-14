@@ -1,7 +1,5 @@
-// #include <Adafruit_BME280.h>
 #include "BME.h"
-#include "Adafruit_BME280.h"
-// #include <Adafruit_Sensor.h>
+#include <Adafruit_BME280.h>
 
 BME::BME()
 {
