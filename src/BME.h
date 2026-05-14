@@ -22,18 +22,35 @@ class BME
 {
 	public:
 		BME();
+
+		/** @brief Initialize the BME280. @param ADR_ I2C address (default 0x77).
+		    @return true if sensor found and initialized successfully. */
 		bool begin(uint8_t ADR_ = 0x77);
+
+		/** @brief Atmospheric pressure. @return Pressure in mBar. */
 		float getPressure();
+
+		/** @brief Relative humidity. @return Humidity in %. */
 		float getHumidity();
+
+		/** @brief Air temperature. @return Temperature in °C. */
 		float getTemperature();
-		String getString();
+
+		/** @brief Northern Widget CSV header string.
+		    @return "Pressure Atmos [mBar],Humidity [%],Temp Atmos [C]," */
 		String getHeader();
+
+		/** @brief Northern Widget CSV data string.
+		    @return Comma-separated pressure, humidity, temperature with trailing comma. */
+		String getString();
+
 		// PascalCase aliases — deprecated, use camelCase versions above
 		[[deprecated("Use getPressure()")]]    float GetPressure();
 		[[deprecated("Use getHumidity()")]]    float GetHumidity();
 		[[deprecated("Use getTemperature()")]] float GetTemperature();
-		[[deprecated("Use getString()")]]      String GetString();
 		[[deprecated("Use getHeader()")]]      String GetHeader();
+		[[deprecated("Use getString()")]]      String GetString();
+
 	private:
 		Adafruit_BME280 Sensor;
 		uint8_t ADR = 0x77;
