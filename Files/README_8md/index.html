@@ -260,6 +260,11 @@ This library wraps the <span class="p">[</span><span class="nv">Adafruit BME280 
 
 <span class="n">String</span> <span class="nf">getHeader</span><span class="p">();</span>      <span class="c1">// "Pressure Atmos [mBar],Humidity [%],Temp Atmos [C],"</span>
 <span class="n">String</span> <span class="nf">getString</span><span class="p">();</span>      <span class="c1">// comma-separated values with trailing comma</span>
+
+<span class="c1">// Raw readings interface (NW standard, buffer-based)</span>
+<span class="kt">void</span>     <span class="nf">beginRawReadings</span><span class="p">();</span>
+<span class="kt">uint16_t</span> <span class="nf">takeRawReading</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">offset</span><span class="p">);</span>  <span class="c1">// max 24 bytes per call</span>
+<span class="kt">void</span>     <span class="nf">endRawReadings</span><span class="p">();</span>
 </code></pre></div></div>
 
 <h2 id="installation">Installation</h2>
@@ -273,7 +278,7 @@ This library wraps the <span class="p">[</span><span class="nv">Adafruit BME280 
 
 <hr />
 
-<p>Updated on 2026-05-14 at 21:45:07 +0000</p>
+<p>Updated on 2026-05-15 at 05:04:17 +0000</p>
 
         
       </section>
