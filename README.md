@@ -27,6 +27,11 @@ float getTemperature();  // temperature, °C
 
 String getHeader();      // "Pressure Atmos [mBar],Humidity [%],Temp Atmos [C],"
 String getString();      // comma-separated values with trailing comma
+
+// Raw readings interface (NW standard, buffer-based)
+void     beginRawReadings();
+uint16_t takeRawReading(char* buf, uint16_t offset);  // max 24 bytes per call
+void     endRawReadings();
 ```
 
 ## Installation
