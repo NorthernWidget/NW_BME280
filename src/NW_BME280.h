@@ -45,6 +45,12 @@ class BME
 		    @return Comma-separated pressure, humidity, temperature with trailing comma. */
 		String getString();
 
+		/** @brief Print getHeader()'s columns into any Print: a File to reach the card, Serial to reach the monitor. */
+		size_t printDataHeader(Print& out);
+
+		/** @brief Print getString()'s values, in printDataHeader()'s order. Takes no reading. */
+		size_t printDataRow(Print& out);
+
 		/** @brief Prepare for raw reading collection. */
 		void beginRawReadings();
 

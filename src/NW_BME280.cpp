@@ -45,6 +45,28 @@ String BME::getString()
 	return String(getPressure()) + "," + String(getHumidity()) + "," + String(getTemperature()) + ",";
 }
 
+//The streaming forms of the two above: the same bytes, written into any Print
+//rather than composed. A logger passes the open file. See
+//LIBRARY-DESIGN.md section 14. getHeader() and getString() are left as they
+//are, because printing them through a String would need NW_StringPrint and
+//this library does not depend on NW_Core.
+size_t BME::printDataHeader(Print& out)
+{
+	return out.print("Pressure Atmos [mBar],Humidity [%],Temp Atmos [C],");
+}
+
+size_t BME::printDataRow(Print& out)
+{
+	size_t n = 0;
+	n += out.print(getPressure());
+	n += out.print(',');
+	n += out.print(getHumidity());
+	n += out.print(',');
+	n += out.print(getTemperature());
+	n += out.print(',');
+	return n;
+}
+
 void BME::beginRawReadings() {}
 
 uint16_t BME::takeRawReading(char* buf, uint16_t offset) {
