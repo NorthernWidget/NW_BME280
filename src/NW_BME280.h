@@ -65,13 +65,6 @@ class BME
 		/** @brief End raw reading collection. */
 		void endRawReadings();
 
-		// PascalCase aliases — deprecated, use camelCase versions above
-		[[deprecated("Use getPressure()")]]    float GetPressure();
-		[[deprecated("Use getHumidity()")]]    float GetHumidity();
-		[[deprecated("Use getTemperature()")]] float GetTemperature();
-		[[deprecated("Use getHeader()")]]      String GetHeader();
-		[[deprecated("Use getString()")]]      String GetString();
-
 	private:
 		Adafruit_BME280 Sensor;
 		uint8_t ADR = 0x77;

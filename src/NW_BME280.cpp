@@ -81,8 +81,3 @@ void BME::endRawReadings() {}
 
 // ── PascalCase aliases (deprecated) ───────────────────────────────────────────
 
-float BME::GetPressure()     { return getPressure(); }
-float BME::GetHumidity()     { return getHumidity(); }
-float BME::GetTemperature()  { return getTemperature(); }
-String BME::GetHeader()      { return getHeader(); }
-String BME::GetString()      { return getString(); }
