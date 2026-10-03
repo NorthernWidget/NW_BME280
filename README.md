@@ -25,8 +25,8 @@ float getPressure();     // atmospheric pressure, mBar
 float getHumidity();     // relative humidity, %
 float getTemperature();  // temperature, °C
 
-String getHeader();      // "Pressure Atmos [mBar],Humidity [%],Temp Atmos [C],"
-String getString();      // comma-separated values with trailing comma
+size_t printDataHeader(Print& out);  // "Pressure Atmos [mBar],Humidity [%],Temp Atmos [C],"
+size_t printDataRow(Print& out);     // the values in that order, each followed by a comma
 
 // Raw readings interface (NW standard, buffer-based)
 void     beginRawReadings();
