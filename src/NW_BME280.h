@@ -6,7 +6,7 @@ and pressure sensor.
 Bobby Schulz @ Northern Widget LLC
 
 Wraps the Adafruit BME280 library to provide the Northern Widget sensor
-API: begin(), getHeader(), getString(), and the raw readings interface.
+API: begin(), printDataHeader(), printDataRow(), and the raw readings interface.
 Returns atmospheric pressure in mBar, relative humidity in %, and
 temperature in °C.
 
@@ -37,18 +37,11 @@ class BME
 		/** @brief Air temperature. @return Temperature in °C. */
 		float getTemperature();
 
-		/** @brief Northern Widget CSV header string.
-		    @return "Pressure Atmos [mBar],Humidity [%],Temp Atmos [C]," */
-		String getHeader();
-
-		/** @brief Northern Widget CSV data string.
-		    @return Comma-separated pressure, humidity, temperature with trailing comma. */
-		String getString();
-
-		/** @brief Print getHeader()'s columns into any Print: a File to reach the card, Serial to reach the monitor. */
+		/** @brief Print the Northern Widget columns into any Print: a File to reach the card, Serial to reach the monitor.
+		    @return Bytes printed: "Pressure Atmos [mBar],Humidity [%],Temp Atmos [C]," */
 		size_t printDataHeader(Print& out);
 
-		/** @brief Print getString()'s values, in printDataHeader()'s order. Takes no reading. */
+		/** @brief Print pressure, humidity and temperature in printDataHeader()'s order, each followed by a comma. Takes no reading. */
 		size_t printDataRow(Print& out);
 
 		/** @brief Prepare for raw reading collection. */

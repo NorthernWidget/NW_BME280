@@ -29,10 +29,12 @@ void setup() {
         while (true) {}
     }
 
-    Serial.println(bme.getHeader());
+    bme.printDataHeader(Serial);  // straight to the port: no row is built in RAM
+    Serial.println();
 }
 
 void loop() {
-    Serial.println(bme.getString());
+    bme.printDataRow(Serial);
+    Serial.println();
     delay(2000);
 }

@@ -35,21 +35,8 @@ float BME::getTemperature()
 	return Sensor.readTemperature();
 }
 
-String BME::getHeader()
-{
-	return "Pressure Atmos [mBar],Humidity [%],Temp Atmos [C],";
-}
-
-String BME::getString()
-{
-	return String(getPressure()) + "," + String(getHumidity()) + "," + String(getTemperature()) + ",";
-}
-
-//The streaming forms of the two above: the same bytes, written into any Print
-//rather than composed. A logger passes the open file. See
-//LIBRARY-DESIGN.md section 14. getHeader() and getString() are left as they
-//are, because printing them through a String would need NW_StringPrint and
-//this library does not depend on NW_Core.
+//The columns a logger writes, streamed straight into the file. No row is
+//composed in RAM; see LIBRARY-DESIGN.md section 14.
 size_t BME::printDataHeader(Print& out)
 {
 	return out.print("Pressure Atmos [mBar],Humidity [%],Temp Atmos [C],");
