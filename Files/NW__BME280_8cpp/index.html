@@ -243,65 +243,64 @@ Distributed as-is; no warranty is given.
 
 <span class="cp">#include</span> <span class="cpf">"NW_BME280.h"</span><span class="cp">
 </span>
-<span class="n">BME</span><span class="o">::</span><span class="n">BME</span><span class="p">()</span>
-<span class="p">{</span>
+<span class="n">BME</span><span class="o">::</span><span class="n">BME</span><span class="p">()</span> <span class="p">{</span>
 <span class="p">}</span>
 
-<span class="kt">bool</span> <span class="n">BME</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">ADR_</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="n">ADR</span> <span class="o">=</span> <span class="n">ADR_</span><span class="p">;</span>
-    <span class="k">return</span> <span class="n">Sensor</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">ADR</span><span class="p">);</span>
+<span class="kt">bool</span> <span class="n">BME</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="kt">uint8_t</span> <span class="n">ADR_</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">ADR</span> <span class="o">=</span> <span class="n">ADR_</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">Sensor</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">ADR</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="kt">float</span> <span class="n">BME</span><span class="o">::</span><span class="n">getPressure</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="n">Sensor</span><span class="p">.</span><span class="n">readPressure</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.01</span><span class="p">;</span>  <span class="c1">// Pa → mBar</span>
+<span class="kt">float</span> <span class="n">BME</span><span class="o">::</span><span class="n">getPressure</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">Sensor</span><span class="p">.</span><span class="n">readPressure</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.01</span><span class="p">;</span>  <span class="c1">// Pa → mBar</span>
 <span class="p">}</span>
 
-<span class="kt">float</span> <span class="n">BME</span><span class="o">::</span><span class="n">getHumidity</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="n">Sensor</span><span class="p">.</span><span class="n">readHumidity</span><span class="p">();</span>
+<span class="kt">float</span> <span class="n">BME</span><span class="o">::</span><span class="n">getHumidity</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">Sensor</span><span class="p">.</span><span class="n">readHumidity</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="kt">float</span> <span class="n">BME</span><span class="o">::</span><span class="n">getTemperature</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="n">Sensor</span><span class="p">.</span><span class="n">readTemperature</span><span class="p">();</span>
+<span class="kt">float</span> <span class="n">BME</span><span class="o">::</span><span class="n">getTemperature</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">Sensor</span><span class="p">.</span><span class="n">readTemperature</span><span class="p">();</span>
 <span class="p">}</span>
 
-<span class="n">String</span> <span class="n">BME</span><span class="o">::</span><span class="n">getHeader</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="s">"Pressure Atmos [mBar],Humidity [%],Temp Atmos [C],"</span><span class="p">;</span>
+<span class="c1">//The columns a logger writes, streamed straight into the file. No row is</span>
+<span class="c1">//composed in RAM; see LIBRARY-DESIGN.md section 14.</span>
+<span class="kt">size_t</span> <span class="n">BME</span><span class="o">::</span><span class="n">printDataHeader</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">"Pressure Atmos [mBar],Humidity [%],Temp Atmos [C],"</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="n">String</span> <span class="n">BME</span><span class="o">::</span><span class="n">getString</span><span class="p">()</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="n">String</span><span class="p">(</span><span class="n">getPressure</span><span class="p">())</span> <span class="o">+</span> <span class="s">","</span> <span class="o">+</span> <span class="n">String</span><span class="p">(</span><span class="n">getHumidity</span><span class="p">())</span> <span class="o">+</span> <span class="s">","</span> <span class="o">+</span> <span class="n">String</span><span class="p">(</span><span class="n">getTemperature</span><span class="p">())</span> <span class="o">+</span> <span class="s">","</span><span class="p">;</span>
+<span class="kt">size_t</span> <span class="n">BME</span><span class="o">::</span><span class="n">printDataRow</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">size_t</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+  <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">getPressure</span><span class="p">());</span>
+  <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sc">','</span><span class="p">);</span>
+  <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">getHumidity</span><span class="p">());</span>
+  <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sc">','</span><span class="p">);</span>
+  <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="n">getTemperature</span><span class="p">());</span>
+  <span class="n">n</span> <span class="o">+=</span> <span class="n">out</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="sc">','</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">n</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">void</span> <span class="n">BME</span><span class="o">::</span><span class="n">beginRawReadings</span><span class="p">()</span> <span class="p">{}</span>
 
 <span class="kt">uint16_t</span> <span class="n">BME</span><span class="o">::</span><span class="n">takeRawReading</span><span class="p">(</span><span class="kt">char</span><span class="o">*</span> <span class="n">buf</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">offset</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kt">char</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
-    <span class="n">dtostrf</span><span class="p">(</span><span class="n">getPressure</span><span class="p">(),</span>    <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span> <span class="n">offset</span> <span class="o">+=</span> <span class="n">snprintf</span><span class="p">(</span><span class="n">buf</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">"%s,"</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span>
-    <span class="n">dtostrf</span><span class="p">(</span><span class="n">getHumidity</span><span class="p">(),</span>    <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span> <span class="n">offset</span> <span class="o">+=</span> <span class="n">snprintf</span><span class="p">(</span><span class="n">buf</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">"%s,"</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span>
-    <span class="n">dtostrf</span><span class="p">(</span><span class="n">getTemperature</span><span class="p">(),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span> <span class="n">offset</span> <span class="o">+=</span> <span class="n">snprintf</span><span class="p">(</span><span class="n">buf</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">"%s,"</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span>
-    <span class="k">return</span> <span class="n">offset</span><span class="p">;</span>
+  <span class="kt">char</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">10</span><span class="p">];</span>
+  <span class="n">dtostrf</span><span class="p">(</span><span class="n">getPressure</span><span class="p">(),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span>
+  <span class="n">offset</span> <span class="o">+=</span> <span class="n">snprintf</span><span class="p">(</span><span class="n">buf</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">"%s,"</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span>
+  <span class="n">dtostrf</span><span class="p">(</span><span class="n">getHumidity</span><span class="p">(),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span>
+  <span class="n">offset</span> <span class="o">+=</span> <span class="n">snprintf</span><span class="p">(</span><span class="n">buf</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">"%s,"</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span>
+  <span class="n">dtostrf</span><span class="p">(</span><span class="n">getTemperature</span><span class="p">(),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span>
+  <span class="n">offset</span> <span class="o">+=</span> <span class="n">snprintf</span><span class="p">(</span><span class="n">buf</span> <span class="o">+</span> <span class="n">offset</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s">"%s,"</span><span class="p">,</span> <span class="n">tmp</span><span class="p">);</span>
+  <span class="k">return</span> <span class="n">offset</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="kt">void</span> <span class="n">BME</span><span class="o">::</span><span class="n">endRawReadings</span><span class="p">()</span> <span class="p">{}</span>
 
 <span class="c1">// ── PascalCase aliases (deprecated) ───────────────────────────────────────────</span>
-
-<span class="kt">float</span> <span class="n">BME</span><span class="o">::</span><span class="n">GetPressure</span><span class="p">()</span>     <span class="p">{</span> <span class="k">return</span> <span class="n">getPressure</span><span class="p">();</span> <span class="p">}</span>
-<span class="kt">float</span> <span class="n">BME</span><span class="o">::</span><span class="n">GetHumidity</span><span class="p">()</span>     <span class="p">{</span> <span class="k">return</span> <span class="n">getHumidity</span><span class="p">();</span> <span class="p">}</span>
-<span class="kt">float</span> <span class="n">BME</span><span class="o">::</span><span class="n">GetTemperature</span><span class="p">()</span>  <span class="p">{</span> <span class="k">return</span> <span class="n">getTemperature</span><span class="p">();</span> <span class="p">}</span>
-<span class="n">String</span> <span class="n">BME</span><span class="o">::</span><span class="n">GetHeader</span><span class="p">()</span>      <span class="p">{</span> <span class="k">return</span> <span class="n">getHeader</span><span class="p">();</span> <span class="p">}</span>
-<span class="n">String</span> <span class="n">BME</span><span class="o">::</span><span class="n">GetString</span><span class="p">()</span>      <span class="p">{</span> <span class="k">return</span> <span class="n">getString</span><span class="p">();</span> <span class="p">}</span>
 </code></pre></div></div>
 
 <hr />
 
-<p>Updated on 2026-09-22 at 23:10:10 +0000</p>
+<p>Updated on 2026-10-04 at 04:51:46 +0000</p>
 
         
       </section>

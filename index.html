@@ -257,8 +257,8 @@
 <span class="kt">float</span> <span class="nf">getHumidity</span><span class="p">();</span>     <span class="c1">// relative humidity, %</span>
 <span class="kt">float</span> <span class="nf">getTemperature</span><span class="p">();</span>  <span class="c1">// temperature, °C</span>
 
-<span class="n">String</span> <span class="nf">getHeader</span><span class="p">();</span>      <span class="c1">// "Pressure Atmos [mBar],Humidity [%],Temp Atmos [C],"</span>
-<span class="n">String</span> <span class="nf">getString</span><span class="p">();</span>      <span class="c1">// comma-separated values with trailing comma</span>
+<span class="kt">size_t</span> <span class="nf">printDataHeader</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">);</span>  <span class="c1">// "Pressure Atmos [mBar],Humidity [%],Temp Atmos [C],"</span>
+<span class="kt">size_t</span> <span class="nf">printDataRow</span><span class="p">(</span><span class="n">Print</span><span class="o">&amp;</span> <span class="n">out</span><span class="p">);</span>     <span class="c1">// the values in that order, each followed by a comma</span>
 
 <span class="c1">// Raw readings interface (NW standard, buffer-based)</span>
 <span class="kt">void</span>     <span class="nf">beginRawReadings</span><span class="p">();</span>
